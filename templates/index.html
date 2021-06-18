@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block title %}INDEX{% endblock title %}
 {% block navbar %}
-    <a class="navbar-brand" href="{{ url_for('index') }}">CRUD</a>
     <hr>
     <a class="navbar-brand" href="{{ url_for('list_all') }}">Go to Table</a>
 {% endblock navbar %}
@@ -10,7 +9,6 @@
         <div class="d-flex justify-content-center mt-2">
             <form action="{{ url_for('index') }}" method="POST">
                 <div class="form-group justify-content-center mt-2">
-                    <input name="id" type="text" class="form-control border border-primary mt-2" placeholder="ID">
                     <input name="university_code" type="text" class="form-control border border-primary mt-2"
                            placeholder="University Code">
                     <input name="name" type="text" class="form-control border border-primary mt-2" placeholder="Name">
