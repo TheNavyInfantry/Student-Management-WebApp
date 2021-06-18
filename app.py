@@ -38,7 +38,7 @@ def index():
             return redirect('/')
 
         except:
-            return "There was an issue adding your data!"
+            return redirect('/error')
 
     # return render_template('index.html', tags_of_form=tags_of_form, len_tags=len(tags_of_form), tags=tags, len=len(tags))
     return render_template('index.html')
@@ -48,6 +48,44 @@ def index():
 def list_all():
     students = Student.query.all()
     return render_template('student_table.html', students=students)
+
+@app.route("/delete/<int:id>")
+def delete(id):
+    query_to_delete = Student.query.get_or_404(id)
+
+    try:
+        db.session.delete(query_to_delete)
+        db.session.commit()
+        return redirect('/list')
+
+    except:
+        return redirect('/error')
+
+@app.route("/update/<int:id>", methods=['GET', 'POST'])
+def update(id):
+    query_to_update = Student.query.get_or_404(id)
+
+    if request.method == "POST":
+        query_to_update.university_code = request.form['university_code']
+        query_to_update.name = request.form['name']
+        query_to_update.surname = request.form['surname']
+        query_to_update.register_date = request.form['register_date']
+        query_to_update.faculty = request.form['faculty']
+
+        try:
+            db.session.commit()
+            return redirect('/list')
+
+        except:
+            return redirect('/error')
+
+    else:
+        return render_template('update.html', update=query_to_update)
+
+
+@app.route("/error")
+def error_404():
+    return render_template('404_error.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
