@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}UPDATE{% endblock title %}
+{% block navbar %}
+    <a class="navbar-brand" href="{{ url_for('index') }}">CRUD</a>
+    <hr>
+    <a class="navbar-brand" href="{{ url_for('list_all') }}">Go to Table</a>
+{% endblock navbar %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="d-flex justify-content-center mt-2">
+            <form action="/update/{{ update.id }}" method="POST">
+                <div class="form-group justify-content-center mt-2">
+                    <input name="university_code" type="text" class="form-control border border-primary mt-2"
+                           value="{{ update.university_code }}" placeholder="University Code">
+                    <input name="name" type="text" class="form-control border border-primary mt-2"
+                           value="{{ update.name }}" placeholder="Name">
+                    <input name="surname" type="text" class="form-control border border-primary mt-2"
+                           value="{{ update.surname }}" placeholder="Surname">
+                    <input name="register_date" type="text" class="form-control border border-primary mt-2"
+                           value="{{ update.register_date }}" placeholder="Register Date">
+                    <input name="faculty" type="text" class="form-control border border-primary mt-2"
+                           value="{{ update.faculty }}" placeholder="Faculty">
+                </div>
+                <input type="submit" class="btn btn-primary" value="Update" id="update-box">
+            </form>
+        </div>
+    </div>
+{% endblock body %}
