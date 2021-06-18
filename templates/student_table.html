@@ -1,14 +1,29 @@
 {% extends "base.html" %}
 {% block title %}TABLE{% endblock title %}
 {% block navbar %}
+    <hr>
     <a class="navbar-brand" href="{{ url_for('index') }}">Back</a>
 {% endblock navbar %}
 {% block body %}
 
+    {% if students|length < 1 %}
+
+    <main class="flex-fill text-warning">
+        <div class="d-flex flex-column mt-5">
+            <h4 class="display-5 text-center mt-3 px-2">
+                <small>There are recorded students! Shall we record one?</small>
+            </h4>
+            <h4 class="display-5 text-center mt-3 px-2">
+                <a class="text-warning" href="{{ url_for('index') }}">Let's Create!</a>
+            </h4>
+        </div>
+    </main>
+
+    {% else %}
+
     <table class="table table-hover table-dark text-center">
         <thead>
         <tr>
-            <!-- Your Columns HERE -->
             <th scope="col">ID</th>
             <th scope="col">University Code</th>
             <th scope="col">Name</th>
@@ -28,14 +43,14 @@
                 <td>{{ student.register_date }}</td>
                 <td>{{ student.faculty }}</td>
                 <td>
-                    <button type="button" class="btn btn-warning">Update</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
+                    <a href="/update/{{student.id}}" class="btn btn-warning">Update</a>
+                    <a href="/delete/{{student.id}}" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
-
     </table>
+    {% endif %}
 
 {% endblock body %}
 
