@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}TABLE{% endblock title %}
+{% block navbar %}
+    <a class="navbar-brand" href="{{ url_for('index') }}">Back</a>
+{% endblock navbar %}
+{% block body %}
+
+    <table class="table table-hover table-dark text-center">
+        <thead>
+        <tr>
+            <!-- Your Columns HERE -->
+            <th scope="col">ID</th>
+            <th scope="col">University Code</th>
+            <th scope="col">Name</th>
+            <th scope="col">Surname</th>
+            <th scope="col">Register Date</th>
+            <th scope="col">Faculty</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for student in students %}
+            <tr>
+                <td>{{ student.id }}</td>
+                <td>{{ student.university_code }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.surname }}</td>
+                <td>{{ student.register_date }}</td>
+                <td>{{ student.faculty }}</td>
+                <td>
+                    <button type="button" class="btn btn-warning">Update</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+{% endblock body %}
+
