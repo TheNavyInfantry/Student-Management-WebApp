@@ -67,7 +67,6 @@ def update(id):
     else:
         return render_template('update.html', update=query_to_update)
 
-
-@app.route("/error")
-def error_404():
-    return render_template('404_error.html')
+@app.errorhandler(404)
+def error_404(e):
+    return render_template('404_error.html'), 404
