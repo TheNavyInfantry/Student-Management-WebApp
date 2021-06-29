@@ -10,14 +10,14 @@
             <form action="{{ url_for('index') }}" method="POST">
                 <h3 class="text-center text-uppercase text-warning">Add Student</h3>
                 <div class="form-group justify-content-center mt-2">
-                    <input name="university_code" type="text" class="form-control border border-primary mt-2"
+                    <input name="university_code" type="text" required="required" class="form-control border border-primary mt-2"
                            placeholder="University Code">
-                    <input name="name" type="text" class="form-control border border-primary mt-2" placeholder="Name">
-                    <input name="surname" type="text" class="form-control border border-primary mt-2"
+                    <input name="name" type="text" required="required" class="form-control border border-primary mt-2" placeholder="Name">
+                    <input name="surname" type="text" required="required" class="form-control border border-primary mt-2"
                            placeholder="Surname">
-                    <input name="register_date" type="text" class="form-control border border-primary mt-2"
+                    <input name="register_date" type="text" required="required" class="form-control border border-primary mt-2"
                            placeholder="Register Date">
-                    <input name="faculty" type="text" class="form-control border border-primary mt-2"
+                    <input name="faculty" type="text" required="required" class="form-control border border-primary mt-2"
                            placeholder="Faculty">
                 </div>
                 <input type="submit" class="btn btn-primary" value="Submit" id="submit-box">
