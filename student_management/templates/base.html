@@ -12,9 +12,26 @@
 </nav>
 
 <body class="bg-dark">
-{% block body %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-center mt-1">
+                        <div class="text-center alert alert-{{ category }}">
+{#                    <button type="button" class="close mb-1" data-dismiss="alert" aria-label="close">#}
+{#                        <span aria-hidden="true">&times;</span>#}
+{#                    </button>#}
+                    {{ message }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 
-{% endblock body %}
+    {% block body %}
+
+    {% endblock body %}
 </body>
 
 </html>
